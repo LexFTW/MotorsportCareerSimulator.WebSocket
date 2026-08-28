@@ -1,42 +1,29 @@
 import Fastify from "fastify";
 import websocket from "@fastify/websocket";
 
+import { createContainer } from "./container.js";
+import { websocketRoutes } from "./src/websocket/routes/WebsocketRoutes.js";
+
 const fastify = Fastify({
     logger: true,
 });
 
 await fastify.register(websocket);
 
-//
-// Health check
-//
+const container = createContainer();
+
+await websocketRoutes(
+    fastify,
+    container.realtimeGateway,
+);
+
 fastify.get("/health", async () => {
     return {
         status: "ok",
     };
 });
 
-//
-// WebSocket
-//
-fastify.get("/ws", { websocket: true }, (socket) => {
-    console.log("WebSocket connected");
-
-    socket.on("message", (message: any) => {
-        console.log("Received:", message.toString());
-
-        socket.send("hi from server");
-    });
-
-    socket.on("close", () => {
-        console.log("WebSocket disconnected");
-    });
-});
-
-//
-// Server
-//
-const port = Number(process.env.PORT ?? 3001);
+const port = Number(process.env.PORT ?? 3000);
 
 try {
     await fastify.listen({
