@@ -10,7 +10,7 @@ fastify.get("/", { websocket: true }, (socket, req) => {
 });
 try {
     await fastify.listen({
-        port: 3000,
+        port: 3001,
         host: "0.0.0.0",
     });
 }
