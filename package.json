@@ -9,12 +9,12 @@
   },
   "dependencies": {
     "@fastify/websocket": "^11.3.0",
+    "@types/node": "^26.4.0",
     "fastify": "^5.12.1",
     "tsx": "^4.23.12",
     "ws": "^8.21.3"
   },
   "devDependencies": {
-    "@types/node": "^26.4.0",
     "@types/ws": "^8.18.1",
     "typescript": "^5.9.3"
   }
