@@ -8,9 +8,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
 
+    "types": ["node"],
+
     "outDir": "dist",
     "rootDir": ".",
-
     "sourceMap": true
   },
   "include": [
