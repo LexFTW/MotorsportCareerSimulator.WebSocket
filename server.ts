@@ -1,7 +1,7 @@
 import Fastify from "fastify";
 import websocket from "@fastify/websocket";
 
-import { createContainer } from "./container.js";
+import { createContainer } from "./src/websocket/bootstrap/container.js";
 import { websocketRoutes } from "./src/websocket/routes/WebsocketRoutes.js";
 
 const fastify = Fastify({
